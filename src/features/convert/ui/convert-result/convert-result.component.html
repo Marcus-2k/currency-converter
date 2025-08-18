@@ -1,0 +1,14 @@
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<ng-container *ngIf="!error">
+  <div *ngIf="loading" class="muted">Converting…</div>
+
+  <div *ngIf="!loading && result">
+    <div class="line">
+      {{ baseAmount }} {{ from }} → <b>{{ result.amount | number : "1.0-6" }} {{ to }}</b>
+    </div>
+    <div class="line muted">Rate: 1 {{ from }} = {{ result.rate | number : "1.0-6" }} {{ to }}</div>
+    <div class="line muted">Inverse: 1 {{ to }} = {{ result.inverseRate | number : "1.0-6" }} {{ from }}</div>
+    <div *ngIf="result.timestamp" class="line muted">Updated: {{ result.timestamp }}</div>
+  </div>
+</ng-container>

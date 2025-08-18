@@ -1,0 +1,23 @@
+<section>
+  <div *ngIf="store.loading()">
+    <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+    <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+  </div>
+
+  <feature-convert-form
+    *ngIf="store.hasData()"
+    [currencies]="store.currencies()"
+    [disabled]="converting()"
+    (convert)="onConvert($event)"
+  ></feature-convert-form>
+
+  <feature-convert-result
+    class="mt-4 block"
+    [loading]="converting()"
+    [error]="error()"
+    [result]="result()"
+    [from]="from()"
+    [to]="to()"
+    [baseAmount]="baseAmount()"
+  ></feature-convert-result>
+</section>

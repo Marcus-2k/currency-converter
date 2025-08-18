@@ -1,0 +1,15 @@
+<form class="grid gap-2" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <p-dropdown formControlName="from" [options]="options" [filter]="true" placeholder="From"></p-dropdown>
+    <p-dropdown formControlName="to" [options]="options" [filter]="true" placeholder="To"></p-dropdown>
+  </div>
+
+  <div class="row">
+    <p-inputNumber formControlName="amount" [min]="0" [maxFractionDigits]="6" inputId="amount"></p-inputNumber>
+    <p-button type="button" icon="pi pi-arrows-h" (click)="swap()" label="Swap"></p-button>
+  </div>
+
+  <div class="row">
+    <p-button label="Convert" type="submit" [disabled]="form.invalid || disabled"></p-button>
+  </div>
+</form>
